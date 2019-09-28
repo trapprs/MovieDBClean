@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E030935C232ED466000C7AFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030935B232ED466000C7AFA /* AppDelegate.swift */; };
-		E030935E232ED466000C7AFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030935D232ED466000C7AFA /* ViewController.swift */; };
-		E0309361232ED466000C7AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E030935F232ED466000C7AFA /* Main.storyboard */; };
 		E0309363232ED468000C7AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0309362232ED468000C7AFA /* Assets.xcassets */; };
 		E0309366232ED468000C7AFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0309364232ED468000C7AFA /* LaunchScreen.storyboard */; };
 		E0309371232ED468000C7AFA /* MovieDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309370232ED468000C7AFA /* MovieDBSwiftTests.swift */; };
+		E0309381233F0567000C7AFA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309380233F0567000C7AFA /* Router.swift */; };
+		E0309385233F069F000C7AFA /* ListMovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309384233F069F000C7AFA /* ListMovieRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +28,14 @@
 /* Begin PBXFileReference section */
 		E0309358232ED466000C7AFA /* MovieDBSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDBSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E030935B232ED466000C7AFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E030935D232ED466000C7AFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E0309360232ED466000C7AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E0309362232ED468000C7AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0309365232ED468000C7AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0309367232ED468000C7AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E030936C232ED468000C7AFA /* MovieDBSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDBSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0309370232ED468000C7AFA /* MovieDBSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBSwiftTests.swift; sourceTree = "<group>"; };
 		E0309372232ED468000C7AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0309380233F0567000C7AFA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E0309384233F069F000C7AFA /* ListMovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMovieRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +77,9 @@
 		E030935A232ED466000C7AFA /* MovieDBSwift */ = {
 			isa = PBXGroup;
 			children = (
-				E030935B232ED466000C7AFA /* AppDelegate.swift */,
-				E030935D232ED466000C7AFA /* ViewController.swift */,
-				E030935F232ED466000C7AFA /* Main.storyboard */,
-				E0309362232ED468000C7AFA /* Assets.xcassets */,
-				E0309364232ED468000C7AFA /* LaunchScreen.storyboard */,
-				E0309367232ED468000C7AFA /* Info.plist */,
+				E030937F233F055A000C7AFA /* Utils */,
+				E030937C232ED6BE000C7AFA /* Modules */,
+				E030937B232ED47A000C7AFA /* Support Files */,
 			);
 			path = MovieDBSwift;
 			sourceTree = "<group>";
@@ -94,6 +91,57 @@
 				E0309372232ED468000C7AFA /* Info.plist */,
 			);
 			path = MovieDBSwiftTests;
+			sourceTree = "<group>";
+		};
+		E030937B232ED47A000C7AFA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E030935B232ED466000C7AFA /* AppDelegate.swift */,
+				E0309362232ED468000C7AFA /* Assets.xcassets */,
+				E0309364232ED468000C7AFA /* LaunchScreen.storyboard */,
+				E0309367232ED468000C7AFA /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		E030937C232ED6BE000C7AFA /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E030937D232ED6DC000C7AFA /* ListMovies */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E030937D232ED6DC000C7AFA /* ListMovies */ = {
+			isa = PBXGroup;
+			children = (
+				E0309384233F069F000C7AFA /* ListMovieRouter.swift */,
+				E0309383233F0686000C7AFA /* Services */,
+				E0309382233F05E3000C7AFA /* Scenes */,
+			);
+			path = ListMovies;
+			sourceTree = "<group>";
+		};
+		E030937F233F055A000C7AFA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E0309380233F0567000C7AFA /* Router.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E0309382233F05E3000C7AFA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E0309383233F0686000C7AFA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +227,6 @@
 			files = (
 				E0309366232ED468000C7AFA /* LaunchScreen.storyboard in Resources */,
 				E0309363232ED468000C7AFA /* Assets.xcassets in Resources */,
-				E0309361232ED466000C7AFA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E030935E232ED466000C7AFA /* ViewController.swift in Sources */,
+				E0309381233F0567000C7AFA /* Router.swift in Sources */,
+				E0309385233F069F000C7AFA /* ListMovieRouter.swift in Sources */,
 				E030935C232ED466000C7AFA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,14 +269,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E030935F232ED466000C7AFA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E0309360232ED466000C7AFA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E0309364232ED468000C7AFA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,7 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95WF9DSUCR;
-				INFOPLIST_FILE = MovieDBSwift/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MovieDBSwift/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +420,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95WF9DSUCR;
-				INFOPLIST_FILE = MovieDBSwift/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MovieDBSwift/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
