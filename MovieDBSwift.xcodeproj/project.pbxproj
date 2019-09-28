@@ -13,6 +13,10 @@
 		E0309371232ED468000C7AFA /* MovieDBSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309370232ED468000C7AFA /* MovieDBSwiftTests.swift */; };
 		E0309381233F0567000C7AFA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309380233F0567000C7AFA /* Router.swift */; };
 		E0309385233F069F000C7AFA /* ListMovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309384233F069F000C7AFA /* ListMovieRouter.swift */; };
+		E0309389233F08EF000C7AFA /* ListUpcomingMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309387233F08EF000C7AFA /* ListUpcomingMoviesViewController.swift */; };
+		E030938A233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0309388233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib */; };
+		E030938C233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030938B233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift */; };
+		E030938E233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030938D233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		E0309372232ED468000C7AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0309380233F0567000C7AFA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		E0309384233F069F000C7AFA /* ListMovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMovieRouter.swift; sourceTree = "<group>"; };
+		E0309387233F08EF000C7AFA /* ListUpcomingMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpcomingMoviesViewController.swift; sourceTree = "<group>"; };
+		E0309388233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListUpcomingMoviesViewController.xib; sourceTree = "<group>"; };
+		E030938B233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpcomingMoviesInteractor.swift; sourceTree = "<group>"; };
+		E030938D233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpcomingMoviesPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +85,8 @@
 		E030935A232ED466000C7AFA /* MovieDBSwift */ = {
 			isa = PBXGroup;
 			children = (
-				E030937F233F055A000C7AFA /* Utils */,
 				E030937C232ED6BE000C7AFA /* Modules */,
+				E030937F233F055A000C7AFA /* Utils */,
 				E030937B232ED47A000C7AFA /* Support Files */,
 			);
 			path = MovieDBSwift;
@@ -116,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				E0309384233F069F000C7AFA /* ListMovieRouter.swift */,
+				E030938F233F203F000C7AFA /* Models */,
 				E0309383233F0686000C7AFA /* Services */,
 				E0309382233F05E3000C7AFA /* Scenes */,
 			);
@@ -133,6 +142,7 @@
 		E0309382233F05E3000C7AFA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E0309386233F088E000C7AFA /* ListUpcomingMovies */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -142,6 +152,24 @@
 			children = (
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		E0309386233F088E000C7AFA /* ListUpcomingMovies */ = {
+			isa = PBXGroup;
+			children = (
+				E030938B233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift */,
+				E030938D233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift */,
+				E0309387233F08EF000C7AFA /* ListUpcomingMoviesViewController.swift */,
+				E0309388233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib */,
+			);
+			path = ListUpcomingMovies;
+			sourceTree = "<group>";
+		};
+		E030938F233F203F000C7AFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +255,7 @@
 			files = (
 				E0309366232ED468000C7AFA /* LaunchScreen.storyboard in Resources */,
 				E0309363232ED468000C7AFA /* Assets.xcassets in Resources */,
+				E030938A233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0309381233F0567000C7AFA /* Router.swift in Sources */,
+				E030938E233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift in Sources */,
+				E0309389233F08EF000C7AFA /* ListUpcomingMoviesViewController.swift in Sources */,
+				E030938C233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift in Sources */,
 				E0309385233F069F000C7AFA /* ListMovieRouter.swift in Sources */,
 				E030935C232ED466000C7AFA /* AppDelegate.swift in Sources */,
 			);
@@ -403,6 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95WF9DSUCR;
 				INFOPLIST_FILE = "$(SRCROOT)/MovieDBSwift/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,6 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 95WF9DSUCR;
 				INFOPLIST_FILE = "$(SRCROOT)/MovieDBSwift/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

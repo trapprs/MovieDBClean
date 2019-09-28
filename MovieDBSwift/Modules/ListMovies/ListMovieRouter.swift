@@ -8,30 +8,43 @@
 
 import UIKit
 
-class ListMovieRouter: Router {
+class ListMovieRouter: RouterActionProtocol {
     internal var moduleScenes: ModuleScenes?
-    private var scene: Scenes = .listMovies
+    private var scene: Scenes = .listUpcomingMovies
     private var router: Router?
     private var navigation: UINavigationController?
     
-    required init(routerModule: RouterActionProtocol) {
+    func start(router: Router) {
+        self.router = router
+        let view = openFirstScene()
         
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        appDelegate?.window = window
+        self.navigation = UINavigationController(rootViewController: view)
+        window.rootViewController = navigation
+        
+        window.makeKeyAndVisible()
     }
     
-    func start() {
+    func openViewController(in router: Router, moduleScenes: ModuleScenes) {
         
     }
-    
-    func openNextViewController(with sceneName: ModuleScenes) {
-        
-    }
-    
-    func exitRouter() {
-        
-    }
-    
     
     enum Scenes: ModuleScenes {
-        case listMovies
+        case listUpcomingMovies
+    }
+    
+    private func openFirstScene() -> UIViewController {
+        guard let router = self.router else { return UIViewController() }
+        
+        let view = ListUpcomingMoviesViewController(with: router)
+        let interactor = ListUpcomingMoviesInteractor(with: ListUpcomingMoviesInteractorService(), persistence: ListUpcomingMoviesPersistence())
+        view.set(interactor: interactor)
+        let presenter = ListUpcomingMoviesPresenter(with: view)
+        interactor.set(presenter: presenter)
+        
+        return view
     }
 }
