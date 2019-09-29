@@ -10,11 +10,41 @@ import Foundation
 
 class ListUpcomingMoviesServiceMock {
     private let moviesMock: MovieFeedResult = MovieFeedResult(totalPages: 1, page: 1, results: [])
+    
+    private var genres: GenreService = GenreService()
+    
+    private func getGender(genreIds: [Int], completion: @escaping([Genre]) -> Void) {
+        genres.getovieGenre(ids: genreIds) { result in
+            switch result {
+            case .success(let genres):
+                completion(genres)
+            case .failure(_):
+                break
+            }
+        }
+    }
 }
 
 extension ListUpcomingMoviesServiceMock: ListUpcomingMoviesInteractorServiceProtocol {
     func getUpcomingMovies(completion: @escaping (Result<MovieFeedResult, Error>) -> Void) {
-        
-        completion(Result.success(moviesMock))
+        if let url = Bundle.main.url(forResource: "movieResults", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                var jsonData = try decoder.decode(MovieFeedResult.self, from: data)
+               
+                for (index, movie) in jsonData.results.enumerated() {
+                    getGender(genreIds: movie.genreIds) { gen in
+                        jsonData.results[index].genres = gen
+                    }
+                }
+                
+                completion(Result.success(jsonData))
+            } catch let error {
+                print("parse error: \(error.localizedDescription)")
+            }
+        } else {
+            completion(Result.failure(NSError(domain: "", code: -1, userInfo: [:])))
+        }
     }
 }

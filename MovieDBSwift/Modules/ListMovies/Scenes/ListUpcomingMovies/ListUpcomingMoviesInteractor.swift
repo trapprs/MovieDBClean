@@ -25,6 +25,7 @@ final class ListUpcomingMoviesInteractor {
     private var presenter: ListUpcomingMoviesPresenterLogic?
     private var service: ListUpcomingMoviesInteractorServiceProtocol?
     private var persistence: ListUpcomingMoviesPersistenceProtocol?
+    private var movieResult: MovieFeedResult?
     
     init(with service: ListUpcomingMoviesInteractorServiceProtocol, persistence: ListUpcomingMoviesPersistenceProtocol) {
         self.service = service
@@ -44,7 +45,10 @@ extension ListUpcomingMoviesInteractor: ListUpcomingMoviesBusinessLogic {
             
             switch result {
             case .success(let data):
-                self.presenter?.getResultToPresent(dataResult: data)
+                self.movieResult = data
+                if let movieResult = self.movieResult {
+                    self.presenter?.getResultToPresent(dataResult: movieResult)
+                }
             case .failure(let error):
                 self.presenter?.getErrorFromServer(error: error)
             }

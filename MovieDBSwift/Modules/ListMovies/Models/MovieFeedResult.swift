@@ -11,7 +11,7 @@ import Foundation
 struct MovieFeedResult: Codable {
     var totalPages: Int?
     let page: Int?
-    let results: [Movie]
+    var results: [Movie]
     
     enum KeyType: String, CodingKey {
         case totalPages = "total_pages"

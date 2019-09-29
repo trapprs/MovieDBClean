@@ -16,9 +16,11 @@ struct Movie: Codable {
     let voteAverage: Double
     let voteCount: Int
     let posterPath: String
-    let releaseDate: String?
+    var releaseDate: String?
     let overview: String?
     let imageMovieWhatched: String?
+    let genreIds: [Int]
+    var genres: [Genre] = []
 }
 
 enum MoviewKeyType: String, CodingKey {
@@ -32,6 +34,7 @@ enum MoviewKeyType: String, CodingKey {
     case releaseDate = "release_date"
     case overview = "overview"
     case imageMovieWhatched = "imageMovieWhatched"
+    case genreIds = "genre_ids"
 }
 
 extension Movie {
@@ -48,5 +51,6 @@ extension Movie {
         self.releaseDate = try container.decodeIfPresent(String.self, forKey: .releaseDate)
         self.overview = try container.decodeIfPresent(String.self, forKey: .overview)
         self.imageMovieWhatched = try container.decodeIfPresent(String.self, forKey: .imageMovieWhatched)
+        self.genreIds = try container.decode([Int].self, forKey: .genreIds)
     }
 }
