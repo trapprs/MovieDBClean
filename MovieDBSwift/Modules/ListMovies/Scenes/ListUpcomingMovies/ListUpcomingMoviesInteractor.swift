@@ -10,12 +10,15 @@ import Foundation
 
 protocol ListUpcomingMoviesBusinessLogic {
     func set(presenter: ListUpcomingMoviesPresenterLogic)
+    func getListUpcomingMovies()
 }
 
-protocol ListUpcomingMoviesInteractorServiceProtocol { }
+protocol ListUpcomingMoviesInteractorServiceProtocol {
+    func getUpcomingMovies(completion: @escaping(Result<MovieFeedResult, Error>) -> Void)
+}
+
 protocol ListUpcomingMoviesPersistenceProtocol { }
 
-class ListUpcomingMoviesInteractorService: ListUpcomingMoviesInteractorServiceProtocol { }
 class ListUpcomingMoviesPersistence: ListUpcomingMoviesPersistenceProtocol { }
 
 final class ListUpcomingMoviesInteractor {
@@ -33,5 +36,18 @@ final class ListUpcomingMoviesInteractor {
 extension ListUpcomingMoviesInteractor: ListUpcomingMoviesBusinessLogic {
     func set(presenter: ListUpcomingMoviesPresenterLogic) {
         self.presenter = presenter
+    }
+    
+    func getListUpcomingMovies() {
+        service?.getUpcomingMovies(completion: { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let data):
+                self.presenter?.getResultToPresent(dataResult: data)
+            case .failure(let error):
+                self.presenter?.getErrorFromServer(error: error)
+            }
+        })
     }
 }

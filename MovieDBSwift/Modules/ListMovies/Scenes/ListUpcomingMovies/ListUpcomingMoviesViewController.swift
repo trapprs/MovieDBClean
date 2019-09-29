@@ -16,6 +16,7 @@ final class ListUpcomingMoviesViewController: UIViewController {
     private var interactor: ListUpcomingMoviesBusinessLogic?
     private var router: Router?
 
+    // MARK: - Initialization
     init(with router: Router) {
         self.router = router
         
@@ -25,8 +26,16 @@ final class ListUpcomingMoviesViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        interactor?.getListUpcomingMovies()
+    }
 }
 
+// MARK: - ListUpcomingMoviesDisplay
 extension ListUpcomingMoviesViewController: ListUpcomingMoviesDisplay {
     func set(interactor: ListUpcomingMoviesBusinessLogic) {
         self.interactor = interactor

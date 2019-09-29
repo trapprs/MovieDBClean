@@ -8,7 +8,10 @@
 
 import Foundation
 
-protocol ListUpcomingMoviesPresenterLogic { }
+protocol ListUpcomingMoviesPresenterLogic {
+    func getResultToPresent(dataResult: MovieFeedResult)
+    func getErrorFromServer(error: Error)
+}
 
 final class ListUpcomingMoviesPresenter {
     private weak var view: ListUpcomingMoviesDisplay?
@@ -20,5 +23,11 @@ final class ListUpcomingMoviesPresenter {
 
 // MARK: - ListUpcomingMoviesPresenterLogic
 extension ListUpcomingMoviesPresenter: ListUpcomingMoviesPresenterLogic {
+    func getResultToPresent(dataResult: MovieFeedResult) {
+        
+    }
     
+    func getErrorFromServer(error: Error) {
+        
+    }
 }

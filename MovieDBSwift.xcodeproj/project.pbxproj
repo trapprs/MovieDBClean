@@ -17,6 +17,9 @@
 		E030938A233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0309388233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib */; };
 		E030938C233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030938B233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift */; };
 		E030938E233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030938D233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift */; };
+		E0309391233FA74F000C7AFA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309390233FA74F000C7AFA /* Movie.swift */; };
+		E0309393233FA77B000C7AFA /* MovieFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309392233FA77B000C7AFA /* MovieFeedResult.swift */; };
+		E0309395233FA970000C7AFA /* ListUpcomingMoviesServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0309394233FA970000C7AFA /* ListUpcomingMoviesServiceMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		E0309388233F08EF000C7AFA /* ListUpcomingMoviesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListUpcomingMoviesViewController.xib; sourceTree = "<group>"; };
 		E030938B233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpcomingMoviesInteractor.swift; sourceTree = "<group>"; };
 		E030938D233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpcomingMoviesPresenter.swift; sourceTree = "<group>"; };
+		E0309390233FA74F000C7AFA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E0309392233FA77B000C7AFA /* MovieFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedResult.swift; sourceTree = "<group>"; };
+		E0309394233FA970000C7AFA /* ListUpcomingMoviesServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpcomingMoviesServiceMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 		E0309383233F0686000C7AFA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E0309394233FA970000C7AFA /* ListUpcomingMoviesServiceMock.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -168,6 +175,8 @@
 		E030938F233F203F000C7AFA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E0309390233FA74F000C7AFA /* Movie.swift */,
+				E0309392233FA77B000C7AFA /* MovieFeedResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,8 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0309391233FA74F000C7AFA /* Movie.swift in Sources */,
 				E0309381233F0567000C7AFA /* Router.swift in Sources */,
 				E030938E233F1C41000C7AFA /* ListUpcomingMoviesPresenter.swift in Sources */,
+				E0309395233FA970000C7AFA /* ListUpcomingMoviesServiceMock.swift in Sources */,
+				E0309393233FA77B000C7AFA /* MovieFeedResult.swift in Sources */,
 				E0309389233F08EF000C7AFA /* ListUpcomingMoviesViewController.swift in Sources */,
 				E030938C233F1AAD000C7AFA /* ListUpcomingMoviesInteractor.swift in Sources */,
 				E0309385233F069F000C7AFA /* ListMovieRouter.swift in Sources */,

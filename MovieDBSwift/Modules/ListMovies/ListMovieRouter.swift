@@ -29,18 +29,27 @@ class ListMovieRouter: RouterActionProtocol {
     }
     
     func openViewController(in router: Router, moduleScenes: ModuleScenes) {
+        self.scene = moduleScenes as? ListMovieRouter.Scenes ?? ListMovieRouter.Scenes.listUpcomingMovies
         
+        switch scene {
+        case .listUpcomingMovies:
+            break
+        case .getMovieDetail(_):
+            break
+        }
     }
     
     enum Scenes: ModuleScenes {
         case listUpcomingMovies
+        case getMovieDetail(Movie)
     }
     
     private func openFirstScene() -> UIViewController {
         guard let router = self.router else { return UIViewController() }
         
         let view = ListUpcomingMoviesViewController(with: router)
-        let interactor = ListUpcomingMoviesInteractor(with: ListUpcomingMoviesInteractorService(), persistence: ListUpcomingMoviesPersistence())
+        let service = ListUpcomingMoviesServiceMock()
+        let interactor = ListUpcomingMoviesInteractor(with: service, persistence: ListUpcomingMoviesPersistence())
         view.set(interactor: interactor)
         let presenter = ListUpcomingMoviesPresenter(with: view)
         interactor.set(presenter: presenter)
