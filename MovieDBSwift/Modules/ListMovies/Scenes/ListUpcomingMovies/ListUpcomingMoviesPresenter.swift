@@ -31,8 +31,9 @@ extension ListUpcomingMoviesPresenter: ListUpcomingMoviesPresenterLogic {
                 movieResult[index].releaseDate = releaseDate.dateFormated
             }
         }
+        let viewModel = ListMoviesViewModel(movies: movieResult)
         
-        view?.showMovieResult(movies: movieResult)
+        view?.showMovieResult(viewModel: viewModel)
     }
     
     func getErrorFromServer(error: Error) {

@@ -34,6 +34,9 @@ extension ListUpcomingMoviesServiceMock: ListUpcomingMoviesInteractorServiceProt
                 var jsonData = try decoder.decode(MovieFeedResult.self, from: data)
                
                 for (index, movie) in jsonData.results.enumerated() {
+                    if jsonData.results[index].overview?.isEmpty ?? false {
+                       jsonData.results[index].overview = "Sem Sinópse"
+                    }
                     getGender(genreIds: movie.genreIds) { gen in
                         jsonData.results[index].genres = gen
                     }

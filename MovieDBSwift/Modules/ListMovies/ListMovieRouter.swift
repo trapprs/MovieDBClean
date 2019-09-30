@@ -20,11 +20,9 @@ class ListMovieRouter: RouterActionProtocol {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
         appDelegate?.window = window
         self.navigation = UINavigationController(rootViewController: view)
         window.rootViewController = navigation
-        
         window.makeKeyAndVisible()
     }
     
@@ -34,8 +32,12 @@ class ListMovieRouter: RouterActionProtocol {
         switch scene {
         case .listUpcomingMovies:
             break
-        case .getMovieDetail(_):
-            break
+        case .getMovieDetail(let movie):
+            let viewModel = MovieDetailViewModel(movie: movie)
+            
+            let vc = MovieDetailViewController(viewModel: viewModel)
+            
+            self.navigation?.pushViewController(vc, animated: true)
         }
     }
     

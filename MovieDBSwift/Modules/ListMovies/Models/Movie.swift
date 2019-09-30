@@ -17,7 +17,7 @@ struct Movie: Codable {
     let voteCount: Int
     let posterPath: String
     var releaseDate: String?
-    let overview: String?
+    var overview: String?
     let imageMovieWhatched: String?
     let genreIds: [Int]
     var genres: [Genre] = []

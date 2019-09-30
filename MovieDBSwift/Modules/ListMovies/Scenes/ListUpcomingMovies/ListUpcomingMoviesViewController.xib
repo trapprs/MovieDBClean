@@ -21,9 +21,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DCg-tM-L6L">
-                    <rect key="frame" x="0.0" y="124" width="414" height="738"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DCg-tM-L6L">
+                    <rect key="frame" x="20" y="124" width="374" height="738"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7C6-hL-Mfu">
                     <rect key="frame" x="354" y="54" width="40" height="40"/>
@@ -32,14 +32,23 @@
                         <constraint firstAttribute="height" constant="40" id="uHW-KA-tg4"/>
                     </constraints>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie DB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpI-Vq-DNW">
+                    <rect key="frame" x="161" y="63" width="92" height="23"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
             <constraints>
+                <constraint firstItem="7C6-hL-Mfu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DpI-Vq-DNW" secondAttribute="trailing" constant="101" id="248-ci-mCn"/>
+                <constraint firstItem="DCg-tM-L6L" firstAttribute="top" secondItem="DpI-Vq-DNW" secondAttribute="bottom" constant="38" id="4vs-QE-f6H"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DCg-tM-L6L" secondAttribute="trailing" constant="20" id="Chh-SL-8wW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DCg-tM-L6L" secondAttribute="bottom" id="Pu9-uy-iAW"/>
                 <constraint firstItem="7C6-hL-Mfu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="RSb-P5-PWy"/>
-                <constraint firstItem="DCg-tM-L6L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gpf-vU-rPs"/>
+                <constraint firstItem="DCg-tM-L6L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gpf-vU-rPs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7C6-hL-Mfu" secondAttribute="trailing" constant="20" id="n7a-Q5-2Hc"/>
-                <constraint firstItem="DCg-tM-L6L" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nU9-Dh-SyM"/>
+                <constraint firstItem="DpI-Vq-DNW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oMP-uT-sQv"/>
                 <constraint firstItem="DCg-tM-L6L" firstAttribute="firstBaseline" secondItem="7C6-hL-Mfu" secondAttribute="baseline" constant="30" id="okz-rv-khL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
