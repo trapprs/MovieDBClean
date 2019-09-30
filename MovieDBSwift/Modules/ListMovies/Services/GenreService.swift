@@ -9,11 +9,11 @@
 import Foundation
 
 protocol GenreServiceLogic {
-    func getovieGenre(ids: [Int], completion: @escaping(Result<[Genre], Error>) -> Void)
+    func getMovieGenre(ids: [Int], completion: @escaping(Result<[Genre], Error>) -> Void)
 }
 
 class GenreService: GenreServiceLogic {
-    func getovieGenre(ids: [Int], completion: @escaping(Result<[Genre], Error>) -> Void) {
+    func getMovieGenre(ids: [Int], completion: @escaping(Result<[Genre], Error>) -> Void) {
         if let url = Bundle.main.url(forResource: "Genres", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)

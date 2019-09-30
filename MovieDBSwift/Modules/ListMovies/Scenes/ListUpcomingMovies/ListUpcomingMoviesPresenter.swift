@@ -37,6 +37,6 @@ extension ListUpcomingMoviesPresenter: ListUpcomingMoviesPresenterLogic {
     }
     
     func getErrorFromServer(error: Error) {
-        // TODO - Error handler
+       print(error.localizedDescription)
     }
 }

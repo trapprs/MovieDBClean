@@ -14,7 +14,7 @@ class ListUpcomingMoviesServiceMock {
     private var genres: GenreService = GenreService()
     
     private func getGender(genreIds: [Int], completion: @escaping([Genre]) -> Void) {
-        genres.getovieGenre(ids: genreIds) { result in
+        genres.getMovieGenre(ids: genreIds) { result in
             switch result {
             case .success(let genres):
                 completion(genres)
@@ -26,7 +26,7 @@ class ListUpcomingMoviesServiceMock {
 }
 
 extension ListUpcomingMoviesServiceMock: ListUpcomingMoviesInteractorServiceProtocol {
-    func getUpcomingMovies(completion: @escaping (Result<MovieFeedResult, Error>) -> Void) {
+    func getUpcomingMovies(page: Int, completion: @escaping (Result<MovieFeedResult, APIError>) -> Void) {
         if let url = Bundle.main.url(forResource: "movieResults", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
@@ -47,7 +47,7 @@ extension ListUpcomingMoviesServiceMock: ListUpcomingMoviesInteractorServiceProt
                 print("parse error: \(error.localizedDescription)")
             }
         } else {
-            completion(Result.failure(NSError(domain: "", code: -1, userInfo: [:])))
+            completion(Result.failure(.invalidData))
         }
     }
 }

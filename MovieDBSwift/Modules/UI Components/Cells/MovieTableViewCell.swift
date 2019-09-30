@@ -31,14 +31,20 @@ class MovieTableViewCell: UITableViewCell {
             favoriteMovieImageView.tintColor = .orange
         }
     }
-    func setup(title: String, date: String, genres: [Genre], image: UIImage) {
-        self.titleLabel.text = title
-        self.dateLabel.text = date
+    func setup(movie: Movie) {
+        self.titleLabel.text = movie.title
+        self.dateLabel.text = movie.releaseDate ?? ""
         var gen = ""
         
-        for genre in genres {
+        for genre in movie.genres {
             gen += "\(genre.name); "
         }
         self.genderLabel.text = gen
+        DispatchQueue.main.async {
+            guard let dataImage = movie.image else { return }
+            if let image = UIImage(data: dataImage) {
+                self.movieImageView.image = image
+            }
+        }
     }
 }

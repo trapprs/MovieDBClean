@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Movie: Codable {
+struct Movie {
     let originalTitle: String
     let originalLanguage: String
     let title: String
@@ -21,6 +21,8 @@ struct Movie: Codable {
     let imageMovieWhatched: String?
     let genreIds: [Int]
     var genres: [Genre] = []
+    let backdropPath: String
+    var image: Data?
 }
 
 enum MoviewKeyType: String, CodingKey {
@@ -35,9 +37,10 @@ enum MoviewKeyType: String, CodingKey {
     case overview = "overview"
     case imageMovieWhatched = "imageMovieWhatched"
     case genreIds = "genre_ids"
+    case backdropPath = "backdrop_path"
 }
 
-extension Movie {
+extension Movie: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: MoviewKeyType.self)
         
@@ -52,5 +55,6 @@ extension Movie {
         self.overview = try container.decodeIfPresent(String.self, forKey: .overview)
         self.imageMovieWhatched = try container.decodeIfPresent(String.self, forKey: .imageMovieWhatched)
         self.genreIds = try container.decode([Int].self, forKey: .genreIds)
+        self.backdropPath = try container.decode(String.self, forKey: .backdropPath)
     }
 }

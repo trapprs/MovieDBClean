@@ -61,7 +61,9 @@ extension ListUpcomingMoviesViewController: ListUpcomingMoviesDisplay {
     func showMovieResult(viewModel: ListMoviesViewModel) {
         self.viewModel = viewModel
         
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -83,10 +85,8 @@ extension ListUpcomingMoviesViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.reuseID, for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
         let movies = viewModel.getMovies()[indexPath.row]
         
-        cell.setup(title: movies.title,
-                   date: movies.releaseDate ?? "",
-                   genres: movies.genres,
-                   image: UIImage())
+        cell.setup(movie: movies)
+        
         return cell
     }
 }

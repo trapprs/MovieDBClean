@@ -33,10 +33,8 @@ class ListMovieRouter: RouterActionProtocol {
         case .listUpcomingMovies:
             break
         case .getMovieDetail(let movie):
-            let viewModel = MovieDetailViewModel(movie: movie)
-            
+            let viewModel = MovieDetailViewModel(movie: movie) 
             let vc = MovieDetailViewController(viewModel: viewModel)
-            
             self.navigation?.pushViewController(vc, animated: true)
         }
     }
@@ -50,8 +48,10 @@ class ListMovieRouter: RouterActionProtocol {
         guard let router = self.router else { return UIViewController() }
         
         let view = ListUpcomingMoviesViewController(with: router)
-        let service = ListUpcomingMoviesServiceMock()
-        let interactor = ListUpcomingMoviesInteractor(with: service, persistence: ListUpcomingMoviesPersistence())
+        let service = ListUpcomingMoviesService()
+        let interactor = ListUpcomingMoviesInteractor(with: service,
+                                                      persistence: ListUpcomingMoviesPersistence(),
+                                                      genreService: GenreService())
         view.set(interactor: interactor)
         let presenter = ListUpcomingMoviesPresenter(with: view)
         interactor.set(presenter: presenter)
