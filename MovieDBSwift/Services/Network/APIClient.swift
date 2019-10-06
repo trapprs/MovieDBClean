@@ -28,13 +28,13 @@ extension APIClient {
             
             if httpResponse.statusCode == 200 {
                 if let data = data {
-                   // do {
-                        let genericModel = try! JSONDecoder().decode(decodingType, from: data)
+                    do {
+                        let genericModel = try JSONDecoder().decode(decodingType, from: data)
                         
                         completion(genericModel, nil)
-//                    } catch {
-//                        completion(nil, .jsonConversionFailure)
-//                    }
+                    } catch {
+                        completion(nil, .jsonConversionFailure)
+                    }
                 } else {
                     completion(nil, .invalidData)
                 }

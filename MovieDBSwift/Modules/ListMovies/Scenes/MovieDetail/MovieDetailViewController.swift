@@ -24,6 +24,7 @@ final class MovieDetailViewController: UIViewController {
             self.movieDetailTextView.text = viewModel.getMovie().overview
         }
     }
+    @IBOutlet private weak var movieImageView: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton! {
         didSet {
             let favoriteImage = UIImage(named: "favorite")
@@ -44,6 +45,16 @@ final class MovieDetailViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let dataImage = viewModel.getMovie().image else { return }
+        
+        if let image = UIImage(data: dataImage) {
+            self.movieImageView.image = image
+        }
+    }
+    
     @IBAction func tapBackButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

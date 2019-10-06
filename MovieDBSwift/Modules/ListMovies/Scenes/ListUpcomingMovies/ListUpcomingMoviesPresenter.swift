@@ -13,30 +13,29 @@ protocol ListUpcomingMoviesPresenterLogic {
     func getErrorFromServer(error: Error)
 }
 
-final class ListUpcomingMoviesPresenter {
+final class ListUpcomingMoviesPresenter: ListUpcomingMoviesPresenterLogic {
     private weak var view: ListUpcomingMoviesDisplay?
     
     init(with view: ListUpcomingMoviesDisplay) {
         self.view = view
     }
-}
-
-// MARK: - ListUpcomingMoviesPresenterLogic
-extension ListUpcomingMoviesPresenter: ListUpcomingMoviesPresenterLogic {
+    
     func getResultToPresent(dataResult: MovieFeedResult) {
-        var movieResult = dataResult.results
-        
-        for (index,result) in dataResult.results.enumerated() {
-            if let releaseDate = result.releaseDate {
-                movieResult[index].releaseDate = releaseDate.dateFormated
-            }
-        }
-        let viewModel = ListMoviesViewModel(movies: movieResult)
-        
-        view?.showMovieResult(viewModel: viewModel)
+        view?.showMovieResult(viewModel: ListMoviesViewModel(movies: getFormatedData(dataResult)))
     }
     
     func getErrorFromServer(error: Error) {
        print(error.localizedDescription)
+    }
+    
+    private func getFormatedData(_ dataResult: MovieFeedResult) -> [Movie] {
+        var movie = dataResult.results
+        
+        for (index,result) in dataResult.results.enumerated() {
+            if let releaseDate = result.releaseDate {
+                movie[index].releaseDate = releaseDate.dateFormated
+            }
+        }
+        return movie
     }
 }

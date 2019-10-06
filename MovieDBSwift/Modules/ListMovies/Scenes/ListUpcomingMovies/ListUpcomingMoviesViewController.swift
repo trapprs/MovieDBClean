@@ -24,7 +24,7 @@ final class ListUpcomingMoviesViewController: UIViewController {
         }
     }
     private var interactor: ListUpcomingMoviesBusinessLogic?
-    private var router: Router?
+    private var router: Router
     private var viewModel: ListMoviesViewModel = ListMoviesViewModel(movies: [])
     
     // MARK: - Initialization
@@ -60,7 +60,7 @@ extension ListUpcomingMoviesViewController: ListUpcomingMoviesDisplay {
     
     func showMovieResult(viewModel: ListMoviesViewModel) {
         self.viewModel = viewModel
-        
+    
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -69,24 +69,40 @@ extension ListUpcomingMoviesViewController: ListUpcomingMoviesDisplay {
 
 extension ListUpcomingMoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movies = viewModel.getMovies()
-        router?.openNextViewController(with: ListMovieRouter.Scenes.getMovieDetail(movies[indexPath.row]))
+        router.openNextViewController(with: ListMovieFlow.Scenes.getMovieDetail(viewModel.getMovies()[indexPath.row]))
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ListUpcomingMoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let movies = viewModel.getMovies()
-        return movies.count
+        return viewModel.getMovies().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.reuseID, for: indexPath) as? MovieTableViewCell else { return UITableViewCell() }
-        let movies = viewModel.getMovies()[indexPath.row]
+        let mo = viewModel.getMovies()[indexPath.row]
         
-        cell.setup(movie: movies)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.setImageToViewModel(movie: mo)
+            
+            DispatchQueue.main.async {
+                cell.setup(movie: self.viewModel.getMovies()[indexPath.row])
+            }
+        }
         
         return cell
+    }
+    
+    private func setImageToViewModel(movie: Movie) {
+        self.interactor?.getImage(with: movie, completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let image):
+                 self.viewModel.setMovie(id: movie.id, movieData: image)
+            case .failure(_):
+                break
+            }
+        })
     }
 }

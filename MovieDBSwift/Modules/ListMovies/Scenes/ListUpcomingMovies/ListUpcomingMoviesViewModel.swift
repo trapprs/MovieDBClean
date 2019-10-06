@@ -18,4 +18,10 @@ struct ListMoviesViewModel {
     func getMovies() -> [Movie] {
         return movies
     }
+    
+    mutating func setMovie(id: Int, movieData: Data) {
+        for (i, _) in movies.enumerated() where id == movies[i].id {
+            self.movies[i].image = movieData
+        }
+    }
 }

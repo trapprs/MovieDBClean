@@ -12,9 +12,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        let listMovieRouter: RouterActionProtocol = ListMovieRouter()
-        let router = RouterModules(routerModule: listMovieRouter)
+    
+        let listMovieFlow: RouterActionProtocol = ListMovieFlow()
+        let router = RouterModules(routerModule: listMovieFlow)
         router.start()
         
         return true

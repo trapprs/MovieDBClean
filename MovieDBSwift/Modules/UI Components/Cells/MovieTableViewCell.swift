@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell {
+final class MovieTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var genderLabel: UILabel!
@@ -16,10 +16,6 @@ class MovieTableViewCell: UITableViewCell {
         didSet {
             movieImageView.layer.cornerRadius = 10
             movieImageView.layer.shadowPath = UIBezierPath(rect: movieImageView.bounds).cgPath
-
-            movieImageView.layer.shadowRadius = 10
-            movieImageView.layer.shadowOffset = .zero
-            movieImageView.layer.shadowOpacity = 0.1
         }
     }
     @IBOutlet private weak var favoriteMovieImageView: UIImageView! {
@@ -31,20 +27,35 @@ class MovieTableViewCell: UITableViewCell {
             favoriteMovieImageView.tintColor = .orange
         }
     }
-    func setup(movie: Movie) {
-        self.titleLabel.text = movie.title
-        self.dateLabel.text = movie.releaseDate ?? ""
-        var gen = ""
+    
+    // MARK: - Life Cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        for genre in movie.genres {
-            gen += "\(genre.name); "
-        }
-        self.genderLabel.text = gen
         DispatchQueue.main.async {
+            self.movieImageView.image = UIImage()
+        }
+    }
+    
+    // MARK: - functions
+   func setup(movie: Movie) {
+        DispatchQueue.main.async {
+            self.titleLabel.text = movie.title
+            self.dateLabel.text = movie.releaseDate ?? ""
+            self.genderLabel.text = self.setGenreNames(movie)
             guard let dataImage = movie.image else { return }
+           
             if let image = UIImage(data: dataImage) {
                 self.movieImageView.image = image
             }
         }
+    }
+    
+    private func setGenreNames(_ movie: Movie) -> String {
+        var result = ""
+        for genre in movie.genres {
+            result += "\(genre.name); "
+        }
+        return result
     }
 }

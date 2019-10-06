@@ -15,6 +15,7 @@
                 <outlet property="dateLabel" destination="61d-ox-zPs" id="EAD-bl-OhB"/>
                 <outlet property="favoriteButton" destination="rFc-VL-C9r" id="h8d-7T-3qg"/>
                 <outlet property="movieDetailTextView" destination="ChV-nc-1JG" id="yg2-3J-SFK"/>
+                <outlet property="movieImageView" destination="RBe-7N-zbr" id="CYO-ZM-ecg"/>
                 <outlet property="titleLabel" destination="yON-cc-cJm" id="d5Z-AX-H71"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

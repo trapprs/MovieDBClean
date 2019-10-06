@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListMovieRouter: RouterActionProtocol {
+class ListMovieFlow: RouterActionProtocol {
     internal var moduleScenes: ModuleScenes?
     private var scene: Scenes = .listUpcomingMovies
     private var router: Router?
@@ -27,7 +27,7 @@ class ListMovieRouter: RouterActionProtocol {
     }
     
     func openViewController(in router: Router, moduleScenes: ModuleScenes) {
-        self.scene = moduleScenes as? ListMovieRouter.Scenes ?? ListMovieRouter.Scenes.listUpcomingMovies
+        self.scene = moduleScenes as? ListMovieFlow.Scenes ?? ListMovieFlow.Scenes.listUpcomingMovies
         
         switch scene {
         case .listUpcomingMovies:
@@ -50,7 +50,6 @@ class ListMovieRouter: RouterActionProtocol {
         let view = ListUpcomingMoviesViewController(with: router)
         let service = ListUpcomingMoviesService()
         let interactor = ListUpcomingMoviesInteractor(with: service,
-                                                      persistence: ListUpcomingMoviesPersistence(),
                                                       genreService: GenreService())
         view.set(interactor: interactor)
         let presenter = ListUpcomingMoviesPresenter(with: view)
